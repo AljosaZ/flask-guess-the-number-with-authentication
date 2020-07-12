@@ -7,7 +7,7 @@ import uuid
 app = Flask(__name__)
 db.create_all()
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
 
     session_token = request.cookies.get("session_token")
@@ -79,7 +79,7 @@ def result():
 
     return render_template("result.html", message=message)
 
-@app.route("/signout")
+@app.route("/signout", methods=["GET"])
 def signout():
 
     response = make_response(redirect(url_for("index")))
